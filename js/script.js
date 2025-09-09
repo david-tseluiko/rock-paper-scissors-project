@@ -10,3 +10,13 @@ function getComputerChoice() {
             return "scissors";
     }
 }
+
+function getHumanChoice() {
+    let userChoice;
+
+    while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
+        userChoice = prompt("Pick rock, paper, or scissors").toLowerCase();
+    }
+
+    return userChoice;
+}
