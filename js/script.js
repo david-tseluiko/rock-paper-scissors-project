@@ -1,11 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const amountOfRounds = +prompt("How many rounds do you want to play?");
+
+playGame(amountOfRounds);
+
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log(`It's a tie. You both chose ${humanChoice}`);
-        humanScore++;
-        computerScore++;
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
@@ -20,6 +22,20 @@ function playRound(humanChoice, computerChoice) {
             `You lost. You have ${humanChoice} which loses to ${computerChoice}`
         );
         computerScore++;
+    }
+}
+
+function playGame(numberOfRounds) {
+    let humanSelection;
+    let computerSelection;
+
+    for (let i = 0; i < numberOfRounds; i++) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+
+        console.log(`\nYou: ${humanScore}\nComputer ${computerScore}\n\n`);
     }
 }
 
