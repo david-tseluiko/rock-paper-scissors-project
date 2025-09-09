@@ -1,6 +1,21 @@
 let humanScore = 0;
 let computerScore = 0;
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(
+            `It's a tie. You both chose ${humanChoice}`
+        );
+    } else if ((humanChoice === "rock" && computerChoice === "scissors") || (humanChoice === "paper" && computerChoice === "rock") || (humanChoice === "scissors" && computerChoice === "paper")) {
+        console.log(
+            `You won. You have ${humanChoice} which beats ${computerChoice}`
+        );
+    } else {
+        console.log(
+            `You lost. You have ${humanChoice} which loses to ${computerChoice}`
+        );
+    }
+}
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3 + 1);
@@ -18,7 +33,11 @@ function getComputerChoice() {
 function getHumanChoice() {
     let userChoice;
 
-    while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
+    while (
+        userChoice !== "rock" &&
+        userChoice !== "paper" &&
+        userChoice !== "scissors"
+    ) {
         userChoice = prompt("Pick rock, paper, or scissors").toLowerCase();
     }
 
