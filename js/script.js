@@ -2,14 +2,25 @@ const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
 const scissorsButton = document.querySelector(".scissors");
 
-rockButton.addEventListener("click", e => console.log(e.target.textContent));
-paperButton.addEventListener("click", e => console.log(e.target.textContent));
-scissorsButton.addEventListener("click", e => console.log(e.target.textContent));
+rockButton.addEventListener("click", (e) =>
+    playRound(e.target.textContent, getComputerChoice())
+);
+paperButton.addEventListener("click", (e) =>
+    playRound(e.target.textContent, getComputerChoice())
+);
+scissorsButton.addEventListener("click", (e) =>
+    playRound(e.target.textContent, getComputerChoice())
+);
 
 let humanScore = 0;
 let computerScore = 0;
 
+playRound();
+
 function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+
     if (humanChoice === computerChoice) {
         console.log(`It's a tie. You both chose ${humanChoice}`);
     } else if (
@@ -40,18 +51,4 @@ function getComputerChoice() {
         case 3:
             return "scissors";
     }
-}
-
-function getHumanChoice() {
-    let userChoice;
-
-    while (
-        userChoice !== "rock" &&
-        userChoice !== "paper" &&
-        userChoice !== "scissors"
-    ) {
-        userChoice = prompt("Pick rock, paper, or scissors").toLowerCase();
-    }
-
-    return userChoice;
 }
