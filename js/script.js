@@ -1,5 +1,9 @@
-const resultsButton = document.querySelector(".results");
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
 const playingButtons = document.querySelectorAll(".rock, .paper, .scissors");
+
+let humanScore = 0;
+let computerScore = 0;
 
 playingButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -7,26 +11,25 @@ playingButtons.forEach((button) => {
     });
 });
 
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
     if (humanChoice === computerChoice) {
-        resultsButton.textContent = `It's a tie. You both chose ${humanChoice}`;
+        results.textContent = `It's a tie. You both chose ${humanChoice}`;
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        resultsButton.textContent = `You won. You have ${humanChoice} which beats ${computerChoice}`;
+        results.textContent = `You won. You have ${humanChoice} which beats ${computerChoice}`;
         humanScore++;
     } else {
-        resultsButton.textContent = `You lost. You have ${humanChoice} which loses to ${computerChoice}`;
+        results.textContent = `You lost. You have ${humanChoice} which loses to ${computerChoice}`;
         computerScore++;
     }
+
+    score.textContent = `You: ${humanScore} Computer: ${computerScore}`;
 }
 
 function getComputerChoice() {
