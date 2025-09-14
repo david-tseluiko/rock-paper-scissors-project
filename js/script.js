@@ -1,5 +1,6 @@
 const results = document.querySelector(".results");
 const score = document.querySelector(".score");
+const combination = document.querySelector(".combination");
 const playingButtons = document.querySelectorAll(".rock, .paper, .scissors");
 
 let humanScore = 0;
@@ -14,16 +15,21 @@ playingButtons.forEach((button) => {
 
 function displayWinner() {
     if (humanScore === 5) {
-        results.textContent = `Congratulations, you won the game!`;
+        results.textContent = `You won!`;
 
         humanScore = 0;
         computerScore = 0;
     } else if (computerScore === 5) {
-        results.textContent = `Sadly, you lost the game!`;
+        results.textContent = `You lost!`;
 
         humanScore = 0;
         computerScore = 0;
     }
+}
+
+function capitalize(string)
+{
+    return String(string[0]).toUpperCase() + String(string).slice(1);
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -31,16 +37,19 @@ function playRound(humanChoice, computerChoice) {
     computerChoice = computerChoice.toLowerCase();
 
     if (humanChoice === computerChoice) {
-        results.textContent = `It's a tie. You both chose ${humanChoice}`;
+        results.textContent = `It's a tie`;
+        combination.textContent = `${capitalize(humanChoice)} ties ${computerChoice}`;
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        results.textContent = `You won. You have ${humanChoice} which beats ${computerChoice}`;
+        results.textContent = `You won`;
+        combination.textContent = `${capitalize(humanChoice)} beats ${computerChoice}`;
         humanScore++;
     } else {
-        results.textContent = `You lost. You have ${humanChoice} which loses to ${computerChoice}`;
+        results.textContent = `You lost`;
+        combination.textContent = `${capitalize(humanChoice)} is beaten by ${computerChoice}`;
         computerScore++;
     }
 
