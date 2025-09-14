@@ -1,3 +1,11 @@
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+
+rockButton.addEventListener("click", e => console.log(e.target.textContent));
+paperButton.addEventListener("click", e => console.log(e.target.textContent));
+scissorsButton.addEventListener("click", e => console.log(e.target.textContent));
+
 let humanScore = 0;
 let computerScore = 0;
 
