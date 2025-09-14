@@ -8,8 +8,23 @@ let computerScore = 0;
 playingButtons.forEach((button) => {
     button.addEventListener("click", () => {
         playRound(button.textContent, getComputerChoice());
+        displayWinner();
     });
 });
+
+function displayWinner() {
+    if (humanScore === 5) {
+        results.textContent = `Congratulations, you won the game!`;
+
+        humanScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        results.textContent = `Sadly, you lost the game!`;
+
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
