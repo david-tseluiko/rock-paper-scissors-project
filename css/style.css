@@ -22,15 +22,21 @@ body {
 
 .container {
     text-align: center;
-    margin-top: 250px;
+    margin-top: 200px;
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .results {
     font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.combination {
+    margin-bottom: 50px;
+    font-size: 26px;
 }
 
 .score {
