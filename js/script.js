@@ -1,16 +1,10 @@
-const rockButton = document.querySelector(".rock");
-const paperButton = document.querySelector(".paper");
-const scissorsButton = document.querySelector(".scissors");
+const playingButtons = document.querySelectorAll(".rock, .paper, .scissors");
 
-rockButton.addEventListener("click", (e) =>
-    playRound(e.target.textContent, getComputerChoice())
-);
-paperButton.addEventListener("click", (e) =>
-    playRound(e.target.textContent, getComputerChoice())
-);
-scissorsButton.addEventListener("click", (e) =>
-    playRound(e.target.textContent, getComputerChoice())
-);
+playingButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    playRound(button.textContent, getComputerChoice());
+  });
+});
 
 let humanScore = 0;
 let computerScore = 0;
